@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Streams - Titanium Darts</title>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Streams - Titanium Darts</title>
+<style>
     * { box-sizing: border-box; }
     body {
       font-family: Arial, sans-serif;
@@ -131,110 +132,413 @@
       .stream-container { height: 350px; }
       .banner-ad { width: 100%; }
     }
+  
+
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .site-header {
+      background: #000;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 2px solid #e60000;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .header-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .header-left,
+    .header-right {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      gap: 1rem;
+    }
+
+    .header-left {
+      left: 10%;
+    }
+
+    .header-right {
+      right: 9%; /* Adjusted to shift slightly right */
+    }
+
+    .site-header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #e60000;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+
+    .header-button {
+      padding: 0.75rem 1.5rem;
+      background: none;
+      border: 2px solid #e60000;
+      border-radius: 20px;
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      text-align: center;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .header-button:hover {
+      background: #e60000;
+      color: #fff;
+    }
+
+    .menu-button {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: #fff;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .popup-menu {
+      position: fixed;
+      top: 70px;
+      right: 20px;
+      background: rgba(20, 20, 20, 0.95);
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      display: none;
+      flex-direction: column;
+      gap: 1rem;
+      z-index: 999;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      border: 1px solid #444;
+    }
+
+    .popup-menu a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+
+    .popup-menu a:hover {
+      color: #e60000;
+    }
+
+    .banner {
+      padding-top: 6rem;
+      min-height: 90vh;
+      width: 100%;
+      background: url('darts-banner.png') center center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .banner::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .banner h2,
+    .banner p,
+    .banner-buttons {
+      position: relative;
+      z-index: 2;
+    }
+
+    .banner h2 {
+      color: #fff;
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 0.5em;
+      text-transform: uppercase;
+      margin-top: -0.5rem;
+    }
+
+    .banner p {
+      color: #fff;
+      font-size: 1.3rem;
+      margin-bottom: 2em;
+    }
+
+    .banner-buttons {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .btn {
+      background: #222;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 1em 2em;
+      border-radius: 2em;
+      text-decoration: none;
+      transition: background 0.2s;
+      border: none;
+      outline: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      max-width: 300px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background: #e60000;
+      color: #fff;
+    }
+
+    .schedule-header-bar {
+      background-color: #000;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 2px solid red;
+      margin-bottom: 0;
+    }
+
+    .schedule-header-bar h2 {
+      margin: 0;
+      color: red;
+      font-weight: 900;
+      font-size: 2rem;
+      text-transform: uppercase;
+    }
+
+    .schedule-section {
+      padding: 2rem;
+      background-color: #111;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .event-block {
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+      align-items: center;
+      justify-content: center;
+      max-width: 1100px;
+      width: 100%;
+      flex-wrap: wrap;
+    }
+
+    .event-block img {
+      width: 400px;
+      border-radius: 12px;
+    }
+
+    .event-details {
+      flex: 1;
+      min-width: 280px;
+      color: #fff;
+    }
+
+    .event-details h3 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .event-details p {
+      margin: 0.3rem 0;
+    }
+
+    .event-details .italic {
+      font-style: italic;
+      color: red;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .countdown-banner {
+      background: url('countdownbanner.jpg') center center/cover no-repeat;
+      height: 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      margin-top: 0;
+    }
+
+    .countdown-banner::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+
+    .countdown-content {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+    }
+
+    .countdown-content h2 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .countdown-content p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .countdown-boxes {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .countdown-segment {
+      background: #fff;
+      color: #000;
+      border-radius: 6px;
+      padding: 0.5rem 0.75rem;
+      min-width: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .countdown-segment .time {
+      font-size: 2rem;
+      font-weight: bold;
+      line-height: 1.2;
+    }
+
+    .countdown-segment .label {
+      font-size: 0.75rem;
+      margin-top: 0.2rem;
+    }
+
+    .countdown-btn {
+      background: #e60000;
+      color: #fff;
+      padding: 0.75rem 2rem;
+      border-radius: 999px;
+      font-weight: bold;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s;
+    }
+
+    .countdown-btn:hover {
+      background: #cc0000;
+    }
   </style>
 </head>
 <body>
+<header class="site-header">
+<div class="header-left">
+<a class="header-button" href="darts.html">Darts</a>
+<a class="header-button" href="football.html">Football</a>
+<a class="header-button" href="fighting.html">Fighting</a>
+</div>
+<h1>TITANIUM DARTS</h1>
+<div class="header-right">
+<a class="header-button" href="motorsports.html">Motorsports</a>
+<a class="header-button" href="other.html">Other</a>
+<a class="header-button" href="247tv.html">24/7 TV</a>
+</div>
+<button class="menu-button" onclick="toggleMenu()">☰</button>
+<div class="popup-menu" id="popupMenu">
+<a href="darts.html">Darts</a>
+<a href="football.html">Football</a>
+<a href="fighting.html">Fighting</a>
+<a href="motorsports.html">Motorsports</a>
+<a href="other.html">Other</a>
+<a href="247tv.html">24/7 TV</a>
+<a href="https://www.gofundme.com/f/titanium-discord" target="_blank">Donate</a>
+</div>
+</header>
+<div class="content">
+<!-- STREAM 1 -->
+<div>
+<h2>Poland Darts Masters | Day 2</h2>
+<div class="stream-container">
+<a class="invisible-link" data-clicks="0" href="https://www.profitableratecpm.com/z7i906f7?key=be36a165e204c44637eed62c143d6375" onclick="disableLink(this)" target="_blank"></a>
+<div class="iframe-wrapper">
+<iframe allowfullscreen="" class="locked-iframe" src="https://embedstreams.top/embed/alpha/poland-darts-masters-day-2/2"></iframe>
+</div>
+</div>
+<div class="banner-ad">
 
-  <header class="site-header">
-    <h1>TITANIUM DARTS</h1>
-    <button class="menu-button" onclick="toggleMenu()">☰</button>
-    <div class="popup-menu" id="popupMenu">
-      <a href="index.html">Home</a>
-      <a href="football.html">Football</a>
-      <a href="fighting.html">Fighting</a>
-      <a href="motorsports.html">Motorsports</a>
-      <a href="other.html">Other</a>
-      <a href="247tv.html">24/7 TV</a>
-      <a href="https://www.gofundme.com/f/titanium-discord" target="_blank">Donate</a>
-    </div>
-  </header>
 
-  <div class="content">
+</div>
+</div>
+<!-- STREAM 2 -->
+<div>
+<h2>Poland Darts Masters | Day 2 Backup</h2>
+<div class="stream-container">
+<a class="invisible-link" data-clicks="0" href="https://www.profitableratecpm.com/z7i906f7?key=be36a165e204c44637eed62c143d6375" onclick="disableLink(this)" target="_blank"></a>
+<div class="iframe-wrapper">
+<iframe allowfullscreen="" class="locked-iframe" src="https://embedstreams.top/embed/alpha/poland-darts-masters-day-2/3"></iframe>
+</div>
+</div>
+<div class="banner-ad">
 
-    <!-- STREAM 1 -->
-    <div>
-      <h2>Poland Darts Masters | Day 2</h2>
-      <div class="stream-container">
-        <a href="https://www.profitableratecpm.com/z7i906f7?key=be36a165e204c44637eed62c143d6375"
-           target="_blank"
-           class="invisible-link"
-           onclick="disableLink(this)"
-           data-clicks="0"></a>
-        <div class="iframe-wrapper">
-          <iframe class="locked-iframe" src="https://embedstreams.top/embed/alpha/poland-darts-masters-day-2/2" allowfullscreen></iframe>
-        </div>
-      </div>
-      <div class="banner-ad">
-        <script type="text/javascript">
-          atOptions = {
-            'key' : '52afaf7b9b5aa083a1541bfa9c1cdebb',
-            'format' : 'iframe',
-            'height' : 90,
-            'width' : 728,
-            'params' : {}
-          };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/52afaf7b9b5aa083a1541bfa9c1cdebb/invoke.js"></script>
-      </div>
-    </div>
 
-    <!-- STREAM 2 -->
-    <div>
-      <h2>Poland Darts Masters | Day 2 Backup</h2>
-      <div class="stream-container">
-        <a href="https://www.profitableratecpm.com/z7i906f7?key=be36a165e204c44637eed62c143d6375"
-           target="_blank"
-           class="invisible-link"
-           onclick="disableLink(this)"
-           data-clicks="0"></a>
-        <div class="iframe-wrapper">
-          <iframe class="locked-iframe" src="https://embedstreams.top/embed/alpha/poland-darts-masters-day-2/3" allowfullscreen></iframe>
-        </div>
-      </div>
-      <div class="banner-ad">
-        <script type="text/javascript">
-          atOptions = {
-            'key' : '52afaf7b9b5aa083a1541bfa9c1cdebb',
-            'format' : 'iframe',
-            'height' : 90,
-            'width' : 728,
-            'params' : {}
-          };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/52afaf7b9b5aa083a1541bfa9c1cdebb/invoke.js"></script>
-      </div>
-    </div>
+</div>
+</div>
+<!-- STREAM 3 -->
+<div>
+<h2>Poland Darts Masters | Day 2 Backup 2</h2>
+<div class="stream-container">
+<a class="invisible-link" data-clicks="0" href="https://www.profitableratecpm.com/z7i906f7?key=be36a165e204c44637eed62c143d6375" onclick="disableLink(this)" target="_blank"></a>
+<div class="iframe-wrapper">
+<iframe allowfullscreen="" class="locked-iframe" src="https://embedstreams.top/embed/alpha/poland-darts-masters-day-2/3"></iframe>
+</div>
+</div>
+<div class="banner-ad">
 
-    <!-- STREAM 3 -->
-    <div>
-      <h2>Poland Darts Masters | Day 2 Backup 2</h2>
-      <div class="stream-container">
-        <a href="https://www.profitableratecpm.com/z7i906f7?key=be36a165e204c44637eed62c143d6375"
-           target="_blank"
-           class="invisible-link"
-           onclick="disableLink(this)"
-           data-clicks="0"></a>
-        <div class="iframe-wrapper">
-          <iframe class="locked-iframe" src="https://embedstreams.top/embed/alpha/poland-darts-masters-day-2/3" allowfullscreen></iframe>
-        </div>
-      </div>
-      <div class="banner-ad">
-        <script type="text/javascript">
-          atOptions = {
-            'key' : '52afaf7b9b5aa083a1541bfa9c1cdebb',
-            'format' : 'iframe',
-            'height' : 90,
-            'width' : 728,
-            'params' : {}
-          };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/52afaf7b9b5aa083a1541bfa9c1cdebb/invoke.js"></script>
-      </div>
-    </div>
 
-  </div>
+</div>
+</div>
+</div>
 
-  <script>
+<script>
     function toggleMenu() {
       const menu = document.getElementById("popupMenu");
       menu.style.display = menu.style.display === "flex" ? "none" : "flex";
@@ -248,21 +552,28 @@
       }
     });
 
-    // Disable after 3 clicks for 1 minute
-    function disableLink(linkElement) {
-      let clicks = parseInt(linkElement.getAttribute("data-clicks")) || 0;
-      clicks++;
-      linkElement.setAttribute("data-clicks", clicks);
+    const countdownDate = new Date("July 19, 2025 19:00:00").getTime();
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
 
-      if (clicks >= 3) {
-        linkElement.style.pointerEvents = "none";
-        setTimeout(() => {
-          linkElement.setAttribute("data-clicks", "0");
-          linkElement.style.pointerEvents = "auto";
-        }, 60000); // 1 minute
+      if (distance < 0) {
+        document.querySelector(".countdown-boxes").innerHTML = "<div style='color: #e60000; font-size: 1.5rem;'>LIVE NOW!</div>";
+        return;
       }
-    }
-  </script>
 
-</body>
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerText = days.toString().padStart(2, '0');
+      document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+      document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+      document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+    };
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script></body>
 </html>
