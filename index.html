@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -32,6 +32,28 @@
       z-index: 1000;
     }
 
+    .header-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .header-left,
+    .header-right {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      gap: 1rem;
+    }
+
+    .header-left {
+      left: 10%;
+    }
+
+    .header-right {
+      right: 9%; /* Adjusted to shift slightly right */
+    }
+
     .site-header h1 {
       margin: 0;
       font-size: 2.5rem;
@@ -41,9 +63,26 @@
       text-align: center;
     }
 
+    .header-button {
+      padding: 0.75rem 1.5rem;
+      background: none;
+      border: 2px solid #e60000;
+      border-radius: 20px;
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      text-align: center;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .header-button:hover {
+      background: #e60000;
+      color: #fff;
+    }
+
     .menu-button {
       position: absolute;
-      right: 20px;
+      right: 1rem;
       top: 50%;
       transform: translateY(-50%);
       font-size: 2rem;
@@ -81,7 +120,7 @@
     }
 
     .banner {
-      padding-top: 5rem;
+      padding-top: 6rem;
       min-height: 90vh;
       width: 100%;
       background: url('darts-banner.png') center center/cover no-repeat;
@@ -151,7 +190,6 @@
       color: #fff;
     }
 
-    /* Schedule header bar */
     .schedule-header-bar {
       background-color: #000;
       height: 80px;
@@ -303,9 +341,18 @@
 </head>
 <body>
 
-  <!-- Header -->
   <header class="site-header">
+    <div class="header-left">
+      <a href="darts.html" class="header-button">Darts</a>
+      <a href="football.html" class="header-button">Football</a>
+      <a href="fighting.html" class="header-button">Fighting</a>
+    </div>
     <h1>TITANIUM DARTS</h1>
+    <div class="header-right">
+      <a href="motorsports.html" class="header-button">Motorsports</a>
+      <a href="other.html" class="header-button">Other</a>
+      <a href="247tv.html" class="header-button">24/7 TV</a>
+    </div>
     <button class="menu-button" onclick="toggleMenu()">☰</button>
     <div class="popup-menu" id="popupMenu">
       <a href="darts.html">Darts</a>
@@ -318,7 +365,6 @@
     </div>
   </header>
 
-  <!-- Banner -->
   <div class="banner">
     <h2>JOIN THE BEST DARTS COMMUNITY ONLINE</h2>
     <p>Stay updated with thrilling darts events and live streams</p>
@@ -327,7 +373,6 @@
     </div>
   </div>
 
-  <!-- Stream Schedule Section -->
   <div class="schedule-header-bar">
     <h2>STREAM SCHEDULE</h2>
   </div>
@@ -343,7 +388,7 @@
       </div>
     </div>
     <div class="event-block">
-      <img src="clubworldcup.jpg" alt="Rizzy Live Event" />
+      <img src="clubworldcup.jpg" alt="Club World Cup" />
       <div class="event-details">
         <h3>CLUB WORLD CUP</h3>
         <p style="font-size: 1.2rem; font-weight: bold;">STREAMING EVERY GAME OF THE TOURNAMENT</p>
@@ -352,7 +397,7 @@
       </div>
     </div>
     <div class="event-block">
-      <img src="usdartsimg.jpg" alt="Rizz Tournament" />
+      <img src="usdartsimg.jpg" alt="Poland Darts Masters" />
       <div class="event-details">
         <h3>POLAND DARTS MASTERS</h3>
         <p style="font-size: 1.2rem; font-weight: bold;">EVERY MATCH LIVE</p>
@@ -362,7 +407,6 @@
     </div>
   </section>
 
-  <!-- Countdown Section -->
   <section class="countdown-banner">
     <div class="countdown-content">
       <h2>BETFRED WORLD MATCHPLAY</h2>
@@ -389,7 +433,6 @@
     </div>
   </section>
 
-  <!-- Scripts -->
   <script>
     function toggleMenu() {
       const menu = document.getElementById("popupMenu");
@@ -404,7 +447,6 @@
       }
     });
 
-    // Countdown Script
     const countdownDate = new Date("July 19, 2025 19:00:00").getTime();
     const updateCountdown = () => {
       const now = new Date().getTime();
@@ -429,5 +471,6 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
   </script>
+
 </body>
 </html>
