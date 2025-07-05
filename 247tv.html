@@ -517,7 +517,7 @@
 <div>
 <h2>FAMILY GUY 24/7</h2>
 <div class="stream-container">
-<a class="invisible-link" data-clicks="0" href="https://www.profitableratecpm.com/z7i906f7?key=be36a165e204c44637eed62c143d6375" onclick="disableLink(this)" target="_blank"></a>
+<a class="invisible-link" data-clicks="0" href="https://www.profitableratecpm.com/z7i906f7?key=be36a165e204c44637eed62c143d6375" onclick="handleInvisibleLinkClick(event)" target="_blank"></a>
 <div class="iframe-wrapper">
 <iframe allow="encrypted-media; picture-in-picture;" allowfullscreen="yes" class="locked-iframe" frameborder="0" height="100%" scrolling="no" src="https://veplay.top/stream/d2b4b104-853f-4e4e-9edd-425a1275e90a" style="position:absolute;" width="100%"></iframe>
 </div>
@@ -531,68 +531,63 @@
 <div>
 <h2>24/7 SOUTH PARK</h2>
 <div class="stream-container">
-<a class="invisible-link" data-clicks="0" href="https://www.profitableratecpm.com/z7i906f7?key=be36a165e204c44637eed62c143d6375" onclick="disableLink(this)" target="_blank"></a>
+<a class="invisible-link" data-clicks="0" href="https://www.profitableratecpm.com/z7i906f7?key=be36a165e204c44637eed62c143d6375" onclick="handleInvisibleLinkClick(event)" target="_blank"></a>
 <div class="iframe-wrapper">
-<iframe allow="encrypted-media; picture-in-picture;" allowfullscreen="yes" class="locked-iframe" frameborder="0" height="100%" scrolling="no" src="https://veplay.top/stream/3b146825-9e54-4e17-b96e-c172ced342ad" style="position:absolute;" width="100%"></iframe>
+<iframe allow="encrypted-media; picture-in-picture;" allowfullscreen="yes" class="locked-iframe" frameborder="0" height="100%" scrolling="no" src="https://veplay.top/stream/aa9a3a26-bfa0-47e9-a159-f7420a2d044f" style="position:absolute;" width="100%"></iframe>
 </div>
 </div>
 <div class="banner-ad">
-
 
 </div>
 </div>
 <!-- STREAM 3 -->
 <div>
-<h2>24/7 SIMPSONS</h2>
+<h2>24/7 RICK AND MORTY</h2>
 <div class="stream-container">
-<a class="invisible-link" data-clicks="0" href="https://www.profitableratecpm.com/z7i906f7?key=be36a165e204c44637eed62c143d6375" onclick="disableLink(this)" target="_blank"></a>
+<a class="invisible-link" data-clicks="0" href="https://www.profitableratecpm.com/z7i906f7?key=be36a165e204c44637eed62c143d6375" onclick="handleInvisibleLinkClick(event)" target="_blank"></a>
 <div class="iframe-wrapper">
-<iframe allow="encrypted-media; picture-in-picture;" allowfullscreen="yes" class="locked-iframe" frameborder="0" height="100%" scrolling="no" src="https://veplay.top/stream/8b48e26f-e89d-47ab-abf5-04b4119273d0" style="position:absolute;" width="100%"></iframe>
+<iframe allow="encrypted-media; picture-in-picture;" allowfullscreen="yes" class="locked-iframe" frameborder="0" height="100%" scrolling="no" src="https://veplay.top/stream/fc1ff1a1-8425-4c44-8f87-66d6e6c68c24" style="position:absolute;" width="100%"></iframe>
 </div>
 </div>
 <div class="banner-ad">
 
-
 </div>
 </div>
 </div>
-
 <script>
-    function toggleMenu() {
-      const menu = document.getElementById("popupMenu");
-      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+  function toggleMenu() {
+    const menu = document.getElementById('popupMenu');
+    menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
+  }
+
+  // Handle clicks on invisible links:
+  function handleInvisibleLinkClick(event) {
+    event.preventDefault();
+    const link = event.currentTarget;
+
+    // If link is hidden, ignore clicks
+    if (link.style.display === 'none') return;
+
+    // Get current clicks from dataset or initialize to 0
+    let clicks = parseInt(link.dataset.clicks) || 0;
+
+    clicks++;
+    link.dataset.clicks = clicks;
+
+    // Open link in new tab
+    window.open(link.href, '_blank');
+
+    if (clicks >= 3) {
+      // Hide link
+      link.style.display = 'none';
+
+      // Reset clicks count after 1 minute
+      setTimeout(() => {
+        link.dataset.clicks = '0';
+        link.style.display = 'block';
+      }, 60000);
     }
-
-    document.addEventListener("click", function (e) {
-      const menu = document.getElementById("popupMenu");
-      const button = document.querySelector(".menu-button");
-      if (!menu.contains(e.target) && !button.contains(e.target)) {
-        menu.style.display = "none";
-      }
-    });
-
-    const countdownDate = new Date("July 19, 2025 19:00:00").getTime();
-    const updateCountdown = () => {
-      const now = new Date().getTime();
-      const distance = countdownDate - now;
-
-      if (distance < 0) {
-        document.querySelector(".countdown-boxes").innerHTML = "<div style='color: #e60000; font-size: 1.5rem;'>LIVE NOW!</div>";
-        return;
-      }
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      document.getElementById("days").innerText = days.toString().padStart(2, '0');
-      document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
-      document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
-      document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
-    };
-
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-  </script></body>
+  }
+</script>
+</body>
 </html>

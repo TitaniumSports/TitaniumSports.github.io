@@ -527,7 +527,7 @@
 <div class="stream-container">
 <a class="invisible-link" data-clicks="0" href="https://www.profitableratecpm.com/z7i906f7?key=be36a165e204c44637eed62c143d6375" onclick="disableLink(this)" target="_blank"></a>
 <div class="iframe-wrapper">
-<iframe allowfullscreen="" class="locked-iframe" src="https://embedstreams.top/embed/alpha/cf-montreal-vs-inter-miami-cf/2"></iframe>
+<iframe allowfullscreen="" class="locked-iframe" src="https://embedstreams.top/embed/alpha/cf-montreal-vs-inter-miami/2"></iframe>
 </div>
 </div>
 <div class="banner-ad">
@@ -538,41 +538,32 @@
 </div>
 
 <script>
-    function toggleMenu() {
-      const menu = document.getElementById("popupMenu");
-      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+  function toggleMenu() {
+    const menu = document.getElementById('popupMenu');
+    if (menu.style.display === 'flex') {
+      menu.style.display = 'none';
+    } else {
+      menu.style.display = 'flex';
     }
+  }
 
-    document.addEventListener("click", function (e) {
-      const menu = document.getElementById("popupMenu");
-      const button = document.querySelector(".menu-button");
-      if (!menu.contains(e.target) && !button.contains(e.target)) {
-        menu.style.display = "none";
-      }
-    });
-
-    const countdownDate = new Date("July 19, 2025 19:00:00").getTime();
-    const updateCountdown = () => {
-      const now = new Date().getTime();
-      const distance = countdownDate - now;
-
-      if (distance < 0) {
-        document.querySelector(".countdown-boxes").innerHTML = "<div style='color: #e60000; font-size: 1.5rem;'>LIVE NOW!</div>";
-        return;
-      }
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      document.getElementById("days").innerText = days.toString().padStart(2, '0');
-      document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
-      document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
-      document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
-    };
-
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-  </script></body>
+  // Add the 3-click hide-for-60-seconds logic on each invisible-link
+  function disableLink(link) {
+    let clicks = parseInt(link.getAttribute('data-clicks')) || 0;
+    clicks++;
+    link.setAttribute('data-clicks', clicks);
+    if (clicks >= 3) {
+      // Hide link for 60 seconds
+      link.style.display = 'none';
+      // Reset clicks after 60 seconds and show again
+      setTimeout(() => {
+        link.style.display = 'block';
+        link.setAttribute('data-clicks', '0');
+      }, 60000);
+    }
+    // Allow default behavior of the link (opening in new tab)
+    // So do not preventDefault()
+  }
+</script>
+</body>
 </html>
