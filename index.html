@@ -1,6 +1,6 @@
 <!DOCTYPE html> 
 <html lang="en">
-<head
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Titanium Official</title>
@@ -81,7 +81,7 @@
     }
 
     .banner {
-      margin-top: 6rem;
+      padding-top: 5rem;
       min-height: 90vh;
       width: 100%;
       background: url('darts-banner.png') center center/cover no-repeat;
@@ -114,6 +114,7 @@
       font-weight: 900;
       margin-bottom: 0.5em;
       text-transform: uppercase;
+      margin-top: -0.5rem;
     }
 
     .banner p {
@@ -150,13 +151,23 @@
       color: #fff;
     }
 
-    h2 {
+    /* Schedule header bar */
+    .schedule-header-bar {
+      background-color: #000;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 2px solid red;
+      margin-bottom: 0;
+    }
+
+    .schedule-header-bar h2 {
+      margin: 0;
       color: red;
       font-weight: 900;
-      text-transform: uppercase;
-      text-align: center;
-      margin: 2rem 0 1rem;
       font-size: 2rem;
+      text-transform: uppercase;
     }
 
     .schedule-section {
@@ -208,16 +219,14 @@
     }
 
     .countdown-banner {
-      background: url('countdown banner.png') center center/cover no-repeat;
+      background: url('countdownbanner.jpg') center center/cover no-repeat;
       height: 350px;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       position: relative;
-      margin-top: 3rem;
-      border-top: 2px solid #e60000;
-      border-bottom: 2px solid #e60000;
+      margin-top: 0;
     }
 
     .countdown-banner::before {
@@ -318,14 +327,17 @@
   </div>
 
   <!-- Stream Schedule Section -->
-  <h2>STREAM SCHEDULE</h2>
+  <div class="schedule-header-bar">
+    <h2>STREAM SCHEDULE</h2>
+  </div>
+
   <section class="schedule-section">
     <div class="event-block">
       <img src="ufc317image.jpg" alt="UFC 317 Promo" />
       <div class="event-details">
-        <h3>UFC Fight Night: Lewis vs. Teixeira</h3>
-        <p style="font-size: 1.2rem; font-weight: bold;">LIVE HERE THIS WEEKEND</p>
-        <p class="italic">12 July 11PM</p>
+        <h3>UFC FIGHT NIGHT: LEWIS VS TEIXEIRA</h3>
+        <p style="font-size: 1.2rem; font-weight: bold;">EVERY UFC EVENT LIVE</p>
+        <p class="italic">12th July 11PM</p>
         <a href="fighting.html" class="btn">LIVE HERE</a>
       </div>
     </div>
@@ -334,14 +346,14 @@
       <div class="event-details">
         <h3>CLUB WORLD CUP</h3>
         <p style="font-size: 1.2rem; font-weight: bold;">STREAMING EVERY GAME OF THE TOURNAMENT</p>
-        <p class="italic">June 14 – July 13</p>
+        <p class="italic">14th June – 13th July</p>
         <a href="football.html" class="btn">LIVE HERE</a>
       </div>
     </div>
     <div class="event-block">
       <img src="usdartsimg.jpg" alt="Rizz Tournament" />
       <div class="event-details">
-        <h3>Poland Darts Masters</h3>
+        <h3>POLAND DARTS MASTERS</h3>
         <p style="font-size: 1.2rem; font-weight: bold;">EVERY MATCH LIVE</p>
         <p class="italic">4th July – 5th July</p>
         <a href="darts.html" class="btn">LIVE HERE</a>
